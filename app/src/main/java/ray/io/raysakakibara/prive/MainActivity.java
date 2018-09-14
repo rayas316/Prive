@@ -43,46 +43,18 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                final String[] items = {"item_0", "item_1", "item_2"};
-                int defaultItem = 0; // デフォルトでチェックされているアイテム
-                final List<Integer> checkedItems = new ArrayList<>();
-                checkedItems.add(defaultItem);
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("使用終了")
-                        .setSingleChoiceItems(items, defaultItem, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int idx) {
-                                if (idx == 0) {
+                RealmResults<Card> results = realm.where(Card.class)
+                        .equalTo("title", adapter.getItem(position).title)
+                        .equalTo("updateDate", adapter.getItem(position).updateDate)
+                        .equalTo("content", adapter.getItem(position).content)
+                        .findAll();
+                realm.beginTransaction();
+                results.deleteAllFromRealm();
+                realm.commitTransaction();
+                items2.remove(position);
+                adapter.notifyDataSetChanged();
+                return false;
 
-                                } else if (idx == 1) {
-
-                                } else if (idx == 2) {
-                                    RealmResults<Card> results = realm.where(Card.class)
-                                            .equalTo("title", adapter.getItem(position).title)
-                                            .equalTo("updateDate", adapter.getItem(position).updateDate)
-                                            .equalTo("content", adapter.getItem(position).content)
-                                            .findAll();
-                                    realm.beginTransaction();
-                                    results.deleteAllFromRealm();
-                                    realm.commitTransaction();
-                                    items2.remove(position);
-                                    adapter.notifyDataSetChanged();
-                                    return false;
-                                }
-                                checkedItems.clear();
-                                checkedItems.add(idx);
-                            }
-                        })
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (!checkedItems.isEmpty()) {
-                                    Log.d("checkedItem:", "" + checkedItems.get(0));
-                                }
-                            }
-                        })
-                        .setNegativeButton("Cancel", null)
-                        .show();
 
             }
 
