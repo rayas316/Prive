@@ -15,7 +15,6 @@ public class CardAdapter extends ArrayAdapter<Card> {
     public LayoutInflater layoutInflater;
 
 
-
     CardAdapter(Context context, int textViewResourceId, List<Card> objects) {
         super(context, textViewResourceId, objects);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -24,27 +23,19 @@ public class CardAdapter extends ArrayAdapter<Card> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Card card = getItem(position);
-        Button button=getItem(R.id.use);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                useclickevent(v);
-            }
-            public void useclickevent(View v){
-
-            }
-        });
+        final Card card = getItem(position);
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
         }
 
-
-
+        Button button = (Button) convertView.findViewById(R.id.use);
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
         TextView contentsText = (TextView) convertView.findViewById(R.id.contentText);
         TextView valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
         TextView dateText = (TextView) convertView.findViewById(R.id.dateView);
+        TextView countView2 = (TextView) convertView.findViewById(R.id.countView2);
+        TextView countView = (TextView) convertView.findViewById(R.id.countView);
+
 
         titleText.setText(card.title);
         contentsText.setText(card.content + "¥");
@@ -61,6 +52,14 @@ public class CardAdapter extends ArrayAdapter<Card> {
         long value2 = (value1 / diffDays);
         valueOfEverydayText.setText(String.valueOf(value2) + "¥");
         dateText.setText(String.valueOf(diffDays) + "日前");
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                card.count = card.count + 1;
+            }
+        });
+        countView2.setText(String.valueOf(card.count));
+
 
         return convertView;
 
