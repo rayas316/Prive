@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -14,22 +15,36 @@ public class CardAdapter extends ArrayAdapter<Card> {
     public LayoutInflater layoutInflater;
 
 
+
     CardAdapter(Context context, int textViewResourceId, List<Card> objects) {
         super(context, textViewResourceId, objects);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Card card = getItem(position);
+        Button button=getItem(R.id.use);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                useclickevent(v);
+            }
+            public void useclickevent(View v){
+
+            }
+        });
         if (convertView == null) {
-            convertView = layoutInflater.inflate(ray.io.raysakakibara.prive.R.layout.layout_item_memo, null);
+            convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
         }
 
-        TextView titleText = (TextView) convertView.findViewById(ray.io.raysakakibara.prive.R.id.titleText);
-        TextView contentsText = (TextView) convertView.findViewById(ray.io.raysakakibara.prive.R.id.contentText);
-        TextView valueOfEverydayText = (TextView) convertView.findViewById(ray.io.raysakakibara.prive.R.id.valueOfEverydayText);
-        TextView dateText = (TextView) convertView.findViewById(ray.io.raysakakibara.prive.R.id.dateView);
+
+
+        TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
+        TextView contentsText = (TextView) convertView.findViewById(R.id.contentText);
+        TextView valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
+        TextView dateText = (TextView) convertView.findViewById(R.id.dateView);
 
         titleText.setText(card.title);
         contentsText.setText(card.content + "¥");

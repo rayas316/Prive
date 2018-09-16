@@ -14,6 +14,7 @@ public class DetailActivity extends AppCompatActivity {
     TextInputEditText contentText;
     TextInputLayout titleEditTextTextInputLayout2;
     TextInputLayout contentEditTextTextInputLayout2;
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class DetailActivity extends AppCompatActivity {
         titleText = (TextInputEditText) findViewById(ray.io.raysakakibara.prive.R.id.titleEditText2);
         contentText = (TextInputEditText) findViewById(ray.io.raysakakibara.prive.R.id.contentEditText2);
         showData();
+
     }
 
     @Override

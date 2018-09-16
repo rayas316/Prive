@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +22,15 @@ public class MainActivity extends AppCompatActivity {
     public Realm realm;
     CardAdapter adapter;
     List<Card> items2;
+    TextView countView2;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(ray.io.raysakakibara.prive.R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         realm = Realm.getDefaultInstance();
-        listView = (ListView) findViewById(ray.io.raysakakibara.prive.R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -61,13 +64,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
     }
 
     public void setMemoList() {
         RealmResults<Card> results = realm.where(Card.class).findAll();
         items2 = realm.copyFromRealm(results);
 
-        adapter = new CardAdapter(this, ray.io.raysakakibara.prive.R.layout.layout_item_memo, items2);
+        adapter = new CardAdapter(this,R.layout.layout_item_memo, items2);
 
         listView.setAdapter(adapter);
     }
@@ -89,5 +94,6 @@ public class MainActivity extends AppCompatActivity {
         realm.close();
 
     }
+
 
 }
