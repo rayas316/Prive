@@ -14,16 +14,15 @@ public class DetailActivity extends AppCompatActivity {
     TextInputEditText contentText;
     TextInputLayout titleEditTextTextInputLayout2;
     TextInputLayout contentEditTextTextInputLayout2;
-    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(ray.io.raysakakibara.prive.R.layout.activity_detail_activity);
+        setContentView(R.layout.activity_detail_activity);
         realm = Realm.getDefaultInstance();
 
-        titleText = (TextInputEditText) findViewById(ray.io.raysakakibara.prive.R.id.titleEditText2);
-        contentText = (TextInputEditText) findViewById(ray.io.raysakakibara.prive.R.id.contentEditText2);
+        titleText = (TextInputEditText) findViewById(R.id.titleEditText2);
+        contentText = (TextInputEditText) findViewById(R.id.contentEditText2);
         showData();
 
     }
@@ -42,14 +41,15 @@ public class DetailActivity extends AppCompatActivity {
         titleText.setText(card.title);
         contentText.setText(card.content);
 
+
     }
 
     public void update(View view) {
         final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
         String title = titleText.getText().toString();
         String content = contentText.getText().toString();
-        titleEditTextTextInputLayout2 = findViewById(ray.io.raysakakibara.prive.R.id.titleEditTextTextInputLayout2);
-        contentEditTextTextInputLayout2 = findViewById(ray.io.raysakakibara.prive.R.id.contentEditTextTextInputLayout2);
+        titleEditTextTextInputLayout2 = findViewById(R.id.titleEditTextTextInputLayout2);
+        contentEditTextTextInputLayout2 = findViewById(R.id.contentEditTextTextInputLayout2);
         if (title.matches("") && content.matches("")) {
 
             contentEditTextTextInputLayout2.setError("商品名と値段が入力されていません");

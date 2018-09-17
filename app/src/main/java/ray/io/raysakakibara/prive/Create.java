@@ -1,10 +1,12 @@
 package ray.io.raysakakibara.prive;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,18 +20,19 @@ public class Create extends AppCompatActivity {
     TextInputEditText contentEditText;
     TextInputLayout titleEditTextTextInputLayout;
     TextInputLayout contentEditTextTextInputLayout;
+    TextView countView2;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(ray.io.raysakakibara.prive.R.layout.activity_create);
+        setContentView(R.layout.activity_create);
         realm = Realm.getDefaultInstance();
-        titleEditText = findViewById(ray.io.raysakakibara.prive.R.id.titleEditText);
-        contentEditText = findViewById(ray.io.raysakakibara.prive.R.id.contentEditText);
+        titleEditText = findViewById(R.id.titleEditText);
+        contentEditText = findViewById(R.id.contentEditText);
     }
 
 
-    private void save(final String title, final String updateDate, final String content, final Date date) {
+    private void save(final String title, final String updateDate, final String content, final Date date, final int count) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
@@ -38,19 +41,24 @@ public class Create extends AppCompatActivity {
                 card.updateDate = updateDate;
                 card.content = content;
                 card.date = date;
+                card.count = count;
             }
         });
 
     }
 
     public void create(View view) {
-        titleEditTextTextInputLayout = findViewById(ray.io.raysakakibara.prive.R.id.titleEditTextTextInputLayout);
-        contentEditTextTextInputLayout = findViewById(ray.io.raysakakibara.prive.R.id.contentEditTextTextInputLayout);
+        titleEditTextTextInputLayout = findViewById(R.id.titleEditTextTextInputLayout);
+        contentEditTextTextInputLayout = findViewById(R.id.contentEditTextTextInputLayout);
+        countView2 = findViewById(R.id.countView2);
         String title = titleEditText.getText().toString();
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
+        int count = 0;
+
+
         if (title.matches("") && content.matches("")) {
 
             contentEditTextTextInputLayout.setError("商品名と値段が入力されていません");
@@ -70,7 +78,7 @@ public class Create extends AppCompatActivity {
         }
 
 
-        save(title, updateDate, content, date);
+        save(title, updateDate, content, date, count);
 
         finish();
     }

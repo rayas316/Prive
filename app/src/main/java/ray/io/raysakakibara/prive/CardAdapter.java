@@ -34,8 +34,6 @@ public class CardAdapter extends ArrayAdapter<Card> {
         TextView valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
         TextView dateText = (TextView) convertView.findViewById(R.id.dateView);
         TextView countView2 = (TextView) convertView.findViewById(R.id.countView2);
-        TextView countView = (TextView) convertView.findViewById(R.id.countView);
-
 
         titleText.setText(card.title);
         contentsText.setText(card.content + "¥");
