@@ -3,23 +3,25 @@
     package="ray.io.raysakakibara.prive">
 
     <application
-        android:name="ray.io.raysakakibara.prive.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/iconxxhdpi"
         android:label="Prive"
         android:roundIcon="@drawable/iconxxhdpi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="ray.io.raysakakibara.prive.SplashActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ray.io.raysakakibara.prive.Create" />
-        <activity android:name="ray.io.raysakakibara.prive.DetailActivity" />
-        <activity android:name="ray.io.raysakakibara.prive.MainActivity" />
+        <activity android:name=".Create" />
+        <activity android:name=".DetailActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".DialogActivity"></activity>
     </application>
 
 </manifest>

@@ -15,7 +15,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:background="@android:drawable/editbox_background"
+        android:background="@drawable/card"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/card"
                 android:gravity="left|center"
                 android:textSize="24sp" />
 
@@ -100,8 +99,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_weight="3"
             android:orientation="horizontal">
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/countView"
@@ -109,7 +112,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="使った回数"
+                android:text="使った回数:"
                 android:textSize="24sp" />
 
             <TextView
@@ -117,17 +120,24 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/use"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/button"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:onClick="use"
                 android:text="use" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 

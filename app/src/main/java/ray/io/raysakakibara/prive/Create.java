@@ -56,7 +56,7 @@ public class Create extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
-        int count = 0;
+        int count=0;
 
 
         if (title.matches("") && content.matches("")) {

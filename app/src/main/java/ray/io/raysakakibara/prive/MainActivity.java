@@ -1,5 +1,7 @@
 package ray.io.raysakakibara.prive;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,39 +34,67 @@ public class MainActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         listView = (ListView) findViewById(R.id.listView);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Card card = (Card) parent.getItemAtPosition(position);
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra("updateDate", card.updateDate);
-                startActivity(intent);
-            }
-
-        });
-
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                RealmResults<Card> results = realm.where(Card.class)
-                        .equalTo("title", adapter.getItem(position).title)
-                        .equalTo("updateDate", adapter.getItem(position).updateDate)
-                        .equalTo("content", adapter.getItem(position).content)
-                        .findAll();
-                realm.beginTransaction();
-                results.deleteAllFromRealm();
-                realm.commitTransaction();
-                items2.remove(position);
-                adapter.notifyDataSetChanged();
-                return false;
+            public void onItemClick(final AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("変更を加えますか？")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Card card = (Card) parent.getItemAtPosition(position);
+                                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                                intent.putExtra("updateDate", card.updateDate);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("キャンセル", null)
+                        .setCancelable(true);
+                // show dialog
+                builder.show();
 
 
             }
 
         });
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
 
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           final int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("削除しますか？")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // remove item from ArrayList
+                                RealmResults<Card> results = realm.where(Card.class)
+                                        .equalTo("title", adapter.getItem(position).title)
+                                        .equalTo("updateDate", adapter.getItem(position).updateDate)
+                                        .equalTo("content", adapter.getItem(position).content)
+                                        .findAll();
+                                realm.beginTransaction();
+                                results.deleteAllFromRealm();
+                                realm.commitTransaction();
+                                items2.remove(position);
+                                adapter.notifyDataSetChanged();
+                                Toast.makeText(MainActivity.this, "削除しました", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("キャンセル", null)
+                        .setCancelable(true);
+                // show dialog
+                builder.show();
+                return true;
+
+
+            }
+
+        });
 
 
     }
@@ -72,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         RealmResults<Card> results = realm.where(Card.class).findAll();
         items2 = realm.copyFromRealm(results);
 
-        adapter = new CardAdapter(this,R.layout.layout_item_memo, items2);
+        adapter = new CardAdapter(this, R.layout.layout_item_memo, items2);
 
         listView.setAdapter(adapter);
     }

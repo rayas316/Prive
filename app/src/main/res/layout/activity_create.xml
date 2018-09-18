@@ -79,7 +79,7 @@
             android:background="@drawable/button"
             android:onClick="create"
             android:text="作成"
-            android:textColor="#ff6090"
+            android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

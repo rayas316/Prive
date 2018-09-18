@@ -14,6 +14,7 @@ public class DetailActivity extends AppCompatActivity {
     TextInputEditText contentText;
     TextInputLayout titleEditTextTextInputLayout2;
     TextInputLayout contentEditTextTextInputLayout2;
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,6 @@ public class DetailActivity extends AppCompatActivity {
         final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
         titleText.setText(card.title);
         contentText.setText(card.content);
-
 
     }
 
