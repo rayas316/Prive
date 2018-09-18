@@ -20,8 +20,6 @@
         <activity android:name=".Create" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".DialogActivity"></activity>
     </application>
 
 </manifest>

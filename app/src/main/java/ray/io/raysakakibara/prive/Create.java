@@ -31,7 +31,7 @@ public class Create extends AppCompatActivity {
     }
 
 
-    private void save(final String title, final String updateDate, final String content, final Date date) {
+    private void save(final String title, final String updateDate, final String content, final Date date, final int count) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
@@ -40,6 +40,7 @@ public class Create extends AppCompatActivity {
                 card.updateDate = updateDate;
                 card.content = content;
                 card.date = date;
+                card.count=count;
             }
         });
 
@@ -53,6 +54,7 @@ public class Create extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
+        int count = 1;
 
 
         if (title.matches("") && content.matches("")) {
@@ -74,7 +76,7 @@ public class Create extends AppCompatActivity {
         }
 
 
-        save(title, updateDate, content, date);
+        save(title, updateDate, content, date, count);
 
         finish();
     }

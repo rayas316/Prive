@@ -5,7 +5,7 @@ apply plugin: 'realm-android'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.raysakakibara.memocamp"
+        applicationId "ray.io.raysakakibara.prive"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1

@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                // remove item from ArrayList
                                 RealmResults<Card> results = realm.where(Card.class)
                                         .equalTo("title", adapter.getItem(position).title)
                                         .equalTo("updateDate", adapter.getItem(position).updateDate)
@@ -87,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .setNegativeButton("キャンセル", null)
                         .setCancelable(true);
-                // show dialog
                 builder.show();
                 return true;
 

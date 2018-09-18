@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
+
 import java.util.Date;
 import java.util.List;
 
@@ -24,18 +28,19 @@ public class CardAdapter extends ArrayAdapter<Card> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final Card card = getItem(position);
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
         }
-        realm=Realm.getDefaultInstance();
 
 
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
+        Button button = (Button) convertView.findViewById(R.id.use);
         TextView contentsText = (TextView) convertView.findViewById(R.id.contentText);
         TextView valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
         TextView dateText = (TextView) convertView.findViewById(R.id.dateView);
+        final TextView countView2 = (TextView) convertView.findViewById(R.id.countView2);
 
         titleText.setText(card.title);
         contentsText.setText("¥" + card.content);
@@ -55,9 +60,26 @@ public class CardAdapter extends ArrayAdapter<Card> {
             valueOfEverydayText.setTextColor(Color.RED);
 
         }
+        countView2.setText(String.valueOf(card.count));
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        card.count = card.count + 1;
+                        realm.insertOrUpdate(card);
+                    }
+                });
+            }
+
+
+        });
+        countView2.setText(String.valueOf(card.count));
         dateText.setText(String.valueOf(diffDays) + "日前");
         return convertView;
 
 
     }
+
 }
