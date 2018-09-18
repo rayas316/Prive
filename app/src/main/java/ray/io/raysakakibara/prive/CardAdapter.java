@@ -8,18 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
 import io.realm.Realm;
-import io.realm.annotations.RealmClass;
-import io.realm.annotations.RealmField;
-
 import java.util.Date;
 import java.util.List;
 
 public class CardAdapter extends ArrayAdapter<Card> {
     Realm realm;
     public LayoutInflater layoutInflater;
-    int i;
 
 
     CardAdapter(Context context, int textViewResourceId, List<Card> objects) {
@@ -34,13 +29,13 @@ public class CardAdapter extends ArrayAdapter<Card> {
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
         }
+        realm=Realm.getDefaultInstance();
 
-        Button button = (Button) convertView.findViewById(R.id.use);
+
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
         TextView contentsText = (TextView) convertView.findViewById(R.id.contentText);
         TextView valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
         TextView dateText = (TextView) convertView.findViewById(R.id.dateView);
-        final TextView countView2 = (TextView) convertView.findViewById(R.id.countView2);
 
         titleText.setText(card.title);
         contentsText.setText("¥" + card.content);
@@ -61,14 +56,6 @@ public class CardAdapter extends ArrayAdapter<Card> {
 
         }
         dateText.setText(String.valueOf(diffDays) + "日前");
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-
-        });
-        countView2.setText(String.valueOf(i) + "回");
         return convertView;
 
 

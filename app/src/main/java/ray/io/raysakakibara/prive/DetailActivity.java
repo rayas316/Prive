@@ -14,7 +14,6 @@ public class DetailActivity extends AppCompatActivity {
     TextInputEditText contentText;
     TextInputLayout titleEditTextTextInputLayout2;
     TextInputLayout contentEditTextTextInputLayout2;
-    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

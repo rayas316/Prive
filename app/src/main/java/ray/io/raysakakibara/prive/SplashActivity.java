@@ -9,7 +9,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(ray.io.raysakakibara.prive.R.layout.splash);
+        setContentView(R.layout.splash);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

@@ -20,7 +20,6 @@ public class Create extends AppCompatActivity {
     TextInputEditText contentEditText;
     TextInputLayout titleEditTextTextInputLayout;
     TextInputLayout contentEditTextTextInputLayout;
-    TextView countView2;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,7 @@ public class Create extends AppCompatActivity {
     }
 
 
-    private void save(final String title, final String updateDate, final String content, final Date date, final int count) {
+    private void save(final String title, final String updateDate, final String content, final Date date) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
@@ -41,7 +40,6 @@ public class Create extends AppCompatActivity {
                 card.updateDate = updateDate;
                 card.content = content;
                 card.date = date;
-                card.count = count;
             }
         });
 
@@ -50,13 +48,11 @@ public class Create extends AppCompatActivity {
     public void create(View view) {
         titleEditTextTextInputLayout = findViewById(R.id.titleEditTextTextInputLayout);
         contentEditTextTextInputLayout = findViewById(R.id.contentEditTextTextInputLayout);
-        countView2 = findViewById(R.id.countView2);
         String title = titleEditText.getText().toString();
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分", Locale.JAPANESE);
         String updateDate = sdf.format(date);
         String content = contentEditText.getText().toString();
-        int count=0;
 
 
         if (title.matches("") && content.matches("")) {
@@ -78,7 +74,7 @@ public class Create extends AppCompatActivity {
         }
 
 
-        save(title, updateDate, content, date, count);
+        save(title, updateDate, content, date);
 
         finish();
     }

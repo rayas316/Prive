@@ -13,5 +13,4 @@ public class Card extends RealmObject {
 
     public Date date;
 
-    public int count;
 }
