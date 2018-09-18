@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         RealmResults<Card> results = realm.where(Card.class).findAll();
         items2 = realm.copyFromRealm(results);
 
-        adapter = new CardAdapter(this, R.layout.layout_item_memo, items2);
+        adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
 
         listView.setAdapter(adapter);
     }
@@ -124,6 +124,4 @@ public class MainActivity extends AppCompatActivity {
         realm.close();
 
     }
-
-
 }

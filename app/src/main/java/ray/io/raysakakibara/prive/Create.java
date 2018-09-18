@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.UUID;
 
 import io.realm.Realm;
 
@@ -35,7 +37,8 @@ public class Create extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
-                Card card = realm.createObject(Card.class);
+                SecureRandom random = new SecureRandom();
+                Card card = realm.createObject(Card.class, random.nextInt());
                 card.title = title;
                 card.updateDate = updateDate;
                 card.content = content;
@@ -43,7 +46,7 @@ public class Create extends AppCompatActivity {
                 card.count=count;
             }
         });
-
+        realm.commitTransaction();
     }
 
     public void create(View view) {
