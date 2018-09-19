@@ -10,11 +10,12 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="175dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/card"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,34 +27,31 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
+            android:background="@color/colorAccent"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" />
-
-            <TextView
-                android:id="@+id/thingDisPlay"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="商品名:"
-                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/titleText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="left|center"
+                android:textColor="@color/colorWhite"
                 android:textSize="24sp" />
 
-            <Space
-                android:layout_width="10dp"
+            <Button
+                android:id="@+id/use"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0" />
+                android:layout_weight="1"
+                android:background="@drawable/button2"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:onClick="use"
+                android:paddingTop="10dp"
+                android:text="use"
+                android:textColor="@color/colorAccent" />
 
 
         </LinearLayout>
@@ -62,12 +60,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" />
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/valueOfEverydayDisplay"
@@ -75,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center|left"
                 android:text="値段/Day:"
                 android:textSize="24sp" />
 
@@ -88,75 +83,83 @@
                 android:gravity="left|center"
                 android:textSize="24sp" />
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" />
-
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/countView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
+                android:layout_weight="1"
+                android:gravity="center|left"
                 android:text="使った回数:"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/countView2"
-
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/use"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/button"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:onClick="use"
-                android:text="use" />
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+
+            <TextView
+                android:id="@+id/pricecount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="値段/使用回数:"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/pricecountView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="left|center"
+                android:textSize="24sp" />
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" />
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/valueDisPlay"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center|left"
                 android:text="値段:"
                 android:textSize="14sp" />
 
@@ -168,31 +171,22 @@
                 android:layout_weight="1"
                 android:gravity="left|center" />
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" />
-
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" />
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/dateDisplay"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical|center"
+                android:gravity="center|left"
                 android:text="買ったのは:" />
 
             <TextView
@@ -201,11 +195,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="left|center" />
-
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" />
 
 
         </LinearLayout>

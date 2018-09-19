@@ -9,7 +9,7 @@
                 android:left="2dp"
                 android:right="2dp"
                 android:top="2dp" />
-            <solid android:color="#ec407a" />
+            <solid android:color="@color/colorAccent" />
         </shape>
     </item>
 
@@ -17,10 +17,8 @@
         <shape android:shape="rectangle">
 
             <padding
-                android:bottom="2dp"
-                android:left="2dp"
-                android:right="2dp"
-                android:top="2dp" />
+                android:bottom="1dp"
+                />
             <solid android:color="#ffffff" />
         </shape>
     </item>

@@ -34,51 +34,69 @@ public class CardAdapter extends ArrayAdapter<Card> {
             convertView = layoutInflater.inflate(R.layout.layout_item_memo, null);
         }
 
+        final ViewHolder viewHolder = new ViewHolder(convertView);
 
-        TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
-        Button button = (Button) convertView.findViewById(R.id.use);
-        TextView contentsText = (TextView) convertView.findViewById(R.id.contentText);
-        TextView valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
-        TextView dateText = (TextView) convertView.findViewById(R.id.dateView);
-        final TextView countView2 = (TextView) convertView.findViewById(R.id.countView2);
-
-        titleText.setText(card.title);
-        contentsText.setText("¥" + card.content);
+        viewHolder.titleText.setText(card.title);
+        viewHolder.pricecountView.setText("¥"+String.valueOf(Integer.parseInt(card.content) / card.count));
+        viewHolder.contentsText.setText("¥" + card.content);
         Date date1 = new Date();
         Date date2 = card.date;
         long datetime1 = date1.getTime();
-//        long datetime2 = date2.getTime();
+        long datetime2 = date2.getTime();
         long one_date_time = 24 * 60 * 60 * 1000;
-//        long diffDays = (datetime1 - datetime2) / one_date_time;
-//        if (diffDays == 0) {
-//            diffDays = 1;
-//        }
-//        long value1 = Long.parseLong(card.content);
-//        long value2 = (value1 / diffDays);
-//        valueOfEverydayText.setText("¥" + String.valueOf(value2));
-//        if (value2 >= 100) {
-//            valueOfEverydayText.setTextColor(Color.RED);
-//
-//        }
-        countView2.setText(String.valueOf(card.count));
-        button.setOnClickListener(new View.OnClickListener() {
+        long diffDays = (datetime1 - datetime2) / one_date_time;
+        if (diffDays == 0) {
+            diffDays = 1;
+        }
+        long value1 = Long.parseLong(card.content);
+        long value2 = (value1 / diffDays);
+        viewHolder.valueOfEverydayText.setText("¥" + String.valueOf(value2));
+        if (value2 >= 100) {
+            viewHolder.valueOfEverydayText.setTextColor(Color.RED);
+
+        }
+        viewHolder.countView2.setText(String.valueOf(card.count));
+        viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
                         card.count = card.count + 1;
-                        countView2.setText(String.valueOf(card.count));
+                        viewHolder.countView2.setText(String.valueOf(card.count) + "回");
                         realm.insertOrUpdate(card);
                     }
                 });
+                viewHolder.pricecountView.setText("¥"+String.valueOf(Integer.parseInt(card.content) / card.count));
             }
-
-
         });
-        countView2.setText(String.valueOf(card.count));
-//        dateText.setText(String.valueOf(diffDays) + "日前");
+        viewHolder.countView2.setText(String.valueOf(card.count) + "回");
+        viewHolder.dateText.setText(String.valueOf(diffDays) + "日前");
+
+
         return convertView;
+    }
+
+
+    class ViewHolder {
+        TextView titleText;
+        Button button;
+        TextView contentsText;
+        TextView valueOfEverydayText;
+        TextView dateText;
+        TextView countView2;
+        TextView pricecountView;
+
+
+        public ViewHolder(View convertView) {
+            titleText = (TextView) convertView.findViewById(R.id.titleText);
+            button = (Button) convertView.findViewById(R.id.use);
+            contentsText = (TextView) convertView.findViewById(R.id.contentText);
+            valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
+            dateText = (TextView) convertView.findViewById(R.id.dateView);
+            countView2 = (TextView) convertView.findViewById(R.id.countView2);
+            pricecountView = (TextView) convertView.findViewById(R.id.pricecountView);
+        }
     }
 
 }

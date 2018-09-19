@@ -46,7 +46,6 @@ public class Create extends AppCompatActivity {
                 card.count=count;
             }
         });
-        realm.commitTransaction();
     }
 
     public void create(View view) {
