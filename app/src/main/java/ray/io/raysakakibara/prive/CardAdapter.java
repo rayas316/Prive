@@ -21,10 +21,10 @@ public class CardAdapter extends ArrayAdapter<Card> {
     public LayoutInflater layoutInflater;
 
 
-    CardAdapter(Context context, int textViewResourceId, List<Card> objects) {
+    CardAdapter(Context context, int textViewResourceId, List<Card> objects, Realm realm) {
         super(context, textViewResourceId, objects);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        this.realm = realm;
     }
 
     @Override
@@ -47,27 +47,28 @@ public class CardAdapter extends ArrayAdapter<Card> {
         Date date1 = new Date();
         Date date2 = card.date;
         long datetime1 = date1.getTime();
-        long datetime2 = date2.getTime();
+//        long datetime2 = date2.getTime();
         long one_date_time = 24 * 60 * 60 * 1000;
-        long diffDays = (datetime1 - datetime2) / one_date_time;
-        if (diffDays == 0) {
-            diffDays = 1;
-        }
-        long value1 = Long.parseLong(card.content);
-        long value2 = (value1 / diffDays);
-        valueOfEverydayText.setText("¥" + String.valueOf(value2));
-        if (value2 >= 100) {
-            valueOfEverydayText.setTextColor(Color.RED);
-
-        }
+//        long diffDays = (datetime1 - datetime2) / one_date_time;
+//        if (diffDays == 0) {
+//            diffDays = 1;
+//        }
+//        long value1 = Long.parseLong(card.content);
+//        long value2 = (value1 / diffDays);
+//        valueOfEverydayText.setText("¥" + String.valueOf(value2));
+//        if (value2 >= 100) {
+//            valueOfEverydayText.setTextColor(Color.RED);
+//
+//        }
         countView2.setText(String.valueOf(card.count));
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+                realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
                         card.count = card.count + 1;
+                        countView2.setText(String.valueOf(card.count));
                         realm.insertOrUpdate(card);
                     }
                 });
@@ -76,10 +77,8 @@ public class CardAdapter extends ArrayAdapter<Card> {
 
         });
         countView2.setText(String.valueOf(card.count));
-        dateText.setText(String.valueOf(diffDays) + "日前");
+//        dateText.setText(String.valueOf(diffDays) + "日前");
         return convertView;
-
-
     }
 
 }
