@@ -35,7 +35,7 @@ public class CardAdapter extends ArrayAdapter<Card> {
         final ViewHolder viewHolder = new ViewHolder(convertView);
 
         viewHolder.titleText.setText(card.title);
-        viewHolder.pricecountView.setText("¥"+String.valueOf(Integer.parseInt(card.content) / card.count));
+        viewHolder.pricecountView.setText("¥" + String.valueOf(Integer.parseInt(card.content) / card.count));
         viewHolder.contentsText.setText("¥" + card.content);
         Date date1 = new Date();
         Date date2 = card.date;
@@ -54,7 +54,7 @@ public class CardAdapter extends ArrayAdapter<Card> {
 
         }
 
-        int listjudge=card.listjudge=0;
+        int listjudge = card.listjudge = 0;
         viewHolder.countView2.setText(String.valueOf(card.count));
         viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +67,18 @@ public class CardAdapter extends ArrayAdapter<Card> {
                         realm.insertOrUpdate(card);
                     }
                 });
-                viewHolder.pricecountView.setText("¥"+String.valueOf(Integer.parseInt(card.content) / card.count));
+                viewHolder.pricecountView.setText("¥" + String.valueOf(Integer.parseInt(card.content) / card.count));
             }
         });
         viewHolder.countView2.setText(String.valueOf(card.count) + "回");
         viewHolder.dateText.setText(String.valueOf(diffDays) + "日前");
+
+        if (card.listjudge == 0) {
+
+
+        } else if (card.listjudge == 1) {
+
+        }
 
 
         return convertView;
