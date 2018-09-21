@@ -10,7 +10,8 @@
         android:roundIcon="@drawable/iconxxhdpi"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +22,11 @@
         <activity android:name=".Create" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".Liststar1" />
+        <activity android:name=".Liststar2" />
+        <activity android:name=".Liststar3" />
+        <activity android:name=".Liststar4" />
+        <activity android:name=".Liststar5"></activity>
     </application>
 
 </manifest>

@@ -9,6 +9,8 @@ public class Card extends RealmObject {
     @PrimaryKey
     public int uid;
 
+    public int listjudge;
+
     public String title;
 
     public String updateDate;

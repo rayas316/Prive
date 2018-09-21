@@ -7,4 +7,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="AccentButtonStyle" parent="Theme.AppCompat">
+
+        <item name="colorButtonNormal">#ffffff</item>
+        <item name="colorControlHighlight">#b0bec5</item>
+    </style>
 </resources>

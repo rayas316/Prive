@@ -1,7 +1,10 @@
 package ray.io.raysakakibara.prive;
 
+import android.content.DialogInterface;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +17,7 @@ public class DetailActivity extends AppCompatActivity {
     TextInputEditText contentText;
     TextInputLayout titleEditTextTextInputLayout2;
     TextInputLayout contentEditTextTextInputLayout2;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,73 @@ public class DetailActivity extends AppCompatActivity {
         titleText = (TextInputEditText) findViewById(R.id.titleEditText2);
         contentText = (TextInputEditText) findViewById(R.id.contentEditText2);
         showData();
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choosePrefecture();
+
+            }
+        });
+
+    }
+
+    public void choosePrefecture() {
+        final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
+        final String[] items = {"⭐️", "⭐️⭐️", "⭐️⭐️⭐️", "⭐️⭐️⭐️⭐️", "⭐️⭐️⭐️⭐️⭐️"};
+        final int defaultItem = 0;
+        new AlertDialog.Builder((this))
+                .setTitle("評価")
+                .setSingleChoiceItems(items, defaultItem, null)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (defaultItem == 0) {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    card.listjudge = 1;
+                                    realm.insertOrUpdate(card);
+                                }
+                            });
+                        } else if (defaultItem == 1) {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    card.listjudge = 2;
+                                    realm.insertOrUpdate(card);
+                                }
+                            });
+                        } else if (defaultItem == 2) {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    card.listjudge = 3;
+                                    realm.insertOrUpdate(card);
+                                }
+                            });
+                        } else if (defaultItem == 3) {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    card.listjudge = 4;
+                                    realm.insertOrUpdate(card);
+                                }
+                            });
+                        } else if (defaultItem == 4) {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    card.listjudge = 5;
+                                    realm.insertOrUpdate(card);
+                                }
+                            });
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
 
     }
 

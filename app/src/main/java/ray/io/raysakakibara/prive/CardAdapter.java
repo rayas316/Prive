@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import io.realm.Realm;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
 
 import java.util.Date;
 import java.util.List;
@@ -55,6 +53,8 @@ public class CardAdapter extends ArrayAdapter<Card> {
             viewHolder.valueOfEverydayText.setTextColor(Color.RED);
 
         }
+
+        int listjudge=card.listjudge=0;
         viewHolder.countView2.setText(String.valueOf(card.count));
         viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +94,7 @@ public class CardAdapter extends ArrayAdapter<Card> {
             contentsText = (TextView) convertView.findViewById(R.id.contentText);
             valueOfEverydayText = (TextView) convertView.findViewById(R.id.valueOfEverydayText);
             dateText = (TextView) convertView.findViewById(R.id.dateView);
-            countView2 = (TextView) convertView.findViewById(R.id.countView2);
+            countView2 = (TextView) convertView.findViewById(R.id.countView);
             pricecountView = (TextView) convertView.findViewById(R.id.pricecountView);
         }
     }

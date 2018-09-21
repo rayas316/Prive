@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -26,6 +29,44 @@ public class MainActivity extends AppCompatActivity {
     CardAdapter adapter;
     List<Card> items2;
     TextView countView2;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_actions, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_list_back:
+                this.finish();
+                break;
+
+            case R.id.action_list1:
+                Intent intent = new Intent(MainActivity.this, Liststar1.class);
+                startActivity(intent);
+                break;
+            case R.id.action_list2:
+                Intent intent2 = new Intent(MainActivity.this, Liststar2.class);
+                startActivity(intent2);
+                break;
+            case R.id.action_list3:
+                Intent intent3 = new Intent(MainActivity.this, Liststar3.class);
+                startActivity(intent3);
+                break;
+            case R.id.action_list4:
+                Intent intent4 = new Intent(MainActivity.this, Liststar4.class);
+                startActivity(intent4);
+                break;
+            case R.id.action_list5:
+                Intent intent5 = new Intent(MainActivity.this, Liststar5.class);
+                startActivity(intent5);
+                break;
+        }
+        return true;
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
