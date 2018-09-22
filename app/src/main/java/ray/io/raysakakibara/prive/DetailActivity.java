@@ -121,14 +121,12 @@ public class DetailActivity extends AppCompatActivity {
 
 
     public void showData() {
-        final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
         titleText.setText(card.title);
         contentText.setText(card.content);
 
     }
 
     public void update(View view) {
-        final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
         String title = titleText.getText().toString();
         String content = contentText.getText().toString();
         titleEditTextTextInputLayout2 = findViewById(R.id.titleEditTextTextInputLayout2);

@@ -22,7 +22,7 @@ public class Create extends AppCompatActivity {
     TextInputEditText contentEditText;
     TextInputLayout titleEditTextTextInputLayout;
     TextInputLayout contentEditTextTextInputLayout;
-
+    Card card;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
