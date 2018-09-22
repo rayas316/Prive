@@ -1,11 +1,12 @@
 package ray.io.raysakakibara.prive;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Card extends RealmObject {
+public class Card extends RealmObject implements Serializable {
     @PrimaryKey
     public int uid;
 

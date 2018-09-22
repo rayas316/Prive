@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="ray.io.raysakakibara.prive.MainActivity"
     tools:layout_editor_absoluteY="81dp"
-    android:focusable="false">
+    >
 
    <!--<include layout="@layout/action_bar" />-->
 

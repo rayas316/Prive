@@ -7,7 +7,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
+
 import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 

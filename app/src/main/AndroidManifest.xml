@@ -9,7 +9,8 @@
         android:label="Prive"
         android:roundIcon="@drawable/iconxxhdpi"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.Design.NoActionBar">

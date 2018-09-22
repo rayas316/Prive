@@ -1,6 +1,7 @@
 package ray.io.raysakakibara.prive;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -18,12 +19,15 @@ public class DetailActivity extends AppCompatActivity {
     TextInputLayout titleEditTextTextInputLayout2;
     TextInputLayout contentEditTextTextInputLayout2;
     FloatingActionButton fab;
+    Card card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_activity);
         realm = Realm.getDefaultInstance();
+        card = (Card) getIntent().getSerializableExtra("Card");
+
 
         titleText = (TextInputEditText) findViewById(R.id.titleEditText2);
         contentText = (TextInputEditText) findViewById(R.id.contentEditText2);
@@ -34,14 +38,13 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 choosePrefecture();
-
             }
         });
 
     }
 
+
     public void choosePrefecture() {
-        final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
         final String[] items = {"⭐️⭐️⭐️⭐️⭐", "⭐⭐️⭐️⭐️", "⭐️⭐️⭐️", "⭐️⭐️️", "⭐️"};
         final int defaultItem = 0;
         new AlertDialog.Builder((this))
@@ -58,6 +61,8 @@ public class DetailActivity extends AppCompatActivity {
                                     realm.insertOrUpdate(card);
                                 }
                             });
+                            Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                            startActivity(intent);
                         } else if (defaultItem == 1) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
@@ -66,6 +71,8 @@ public class DetailActivity extends AppCompatActivity {
                                     realm.insertOrUpdate(card);
                                 }
                             });
+                            Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                            startActivity(intent);
                         } else if (defaultItem == 2) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
@@ -74,6 +81,8 @@ public class DetailActivity extends AppCompatActivity {
                                     realm.insertOrUpdate(card);
                                 }
                             });
+                            Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                            startActivity(intent);
                         } else if (defaultItem == 3) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
@@ -82,6 +91,8 @@ public class DetailActivity extends AppCompatActivity {
                                     realm.insertOrUpdate(card);
                                 }
                             });
+                            Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                            startActivity(intent);
                         } else if (defaultItem == 4) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
@@ -90,6 +101,8 @@ public class DetailActivity extends AppCompatActivity {
                                     realm.insertOrUpdate(card);
                                 }
                             });
+                            Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                            startActivity(intent);
                         }
                     }
                 })

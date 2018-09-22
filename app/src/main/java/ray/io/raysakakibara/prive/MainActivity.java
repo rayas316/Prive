@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setMemoList() {
-        RealmResults<Card> results = realm.where(Card.class).equalTo("listjudge",0).findAll();
+        RealmResults<Card> results = realm.where(Card.class).equalTo("listjudge", 0).findAll();
         items2 = realm.copyFromRealm(results);
 
         adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
