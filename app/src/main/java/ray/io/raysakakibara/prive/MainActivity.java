@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public Realm realm;
     CardAdapter adapter;
     List<Card> items2;
-    TextView countView2;
+    TextView countView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_list_back:
-                this.finish();
                 break;
 
             case R.id.action_list1:
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setMemoList() {
-        RealmResults<Card> results = realm.where(Card.class).findAll();
+        RealmResults<Card> results = realm.where(Card.class).equalTo("listjudge",0).findAll();
         items2 = realm.copyFromRealm(results);
 
         adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);

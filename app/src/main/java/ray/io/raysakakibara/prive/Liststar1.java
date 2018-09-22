@@ -17,17 +17,19 @@ public class Liststar1 extends AppCompatActivity {
     Realm realm;
     ListView list1;
     List<Card> items2;
+    CardAdapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar1);
-        this.realm=realm;
-
+        realm=Realm.getDefaultInstance();
+        setMemoList();
 
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -39,7 +41,6 @@ public class Liststar1 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_list_back:
-                this.finish();
                 break;
 
             case R.id.action_list1:
@@ -62,26 +63,28 @@ public class Liststar1 extends AppCompatActivity {
                 Intent intent5 = new Intent(Liststar1.this, Liststar5.class);
                 startActivity(intent5);
                 break;
+            case R.id.action_list:
+                Intent intent0=new Intent(Liststar1.this,MainActivity.class);
+                startActivity(intent0);
+                break;
         }
         return true;
     }
 
     public void setMemoList() {
 
-        list1=(ListView)findViewById(R.id.listView1);
+        list1 = (ListView) findViewById(R.id.listView1);
 
-        RealmResults<Card> results = realm.where(Card.class).equalTo("listjudge",1).findAll();
+        RealmResults<Card> results = realm.where(Card.class).equalTo("listjudge", 1).findAll();
         items2 = realm.copyFromRealm(results);
 
-        CardAdapter adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
+        adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
 
         list1.setAdapter(adapter);
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setMemoList();
-    }
+
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -17,10 +17,13 @@ public class Liststar2 extends AppCompatActivity {
     Realm realm;
     ListView list2;
     List<Card> items2;
+    CardAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar2);
+        realm=Realm.getDefaultInstance();
+        setMemoList();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -33,7 +36,6 @@ public class Liststar2 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_list_back:
-                this.finish();
                 break;
 
             case R.id.action_list1:
@@ -56,6 +58,10 @@ public class Liststar2 extends AppCompatActivity {
                 Intent intent5 = new Intent(Liststar2.this, Liststar5.class);
                 startActivity(intent5);
                 break;
+            case R.id.action_list:
+                Intent intent0=new Intent(Liststar2.this,MainActivity.class);
+                startActivity(intent0);
+                break;
         }
         return true;
     }
@@ -67,15 +73,11 @@ public class Liststar2 extends AppCompatActivity {
         RealmResults<Card> results = realm.where(Card.class).equalTo("listjudge",2).findAll();
         items2 = realm.copyFromRealm(results);
 
-        CardAdapter adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
+        adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
 
         list2.setAdapter(adapter);
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setMemoList();
-    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
