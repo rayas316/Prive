@@ -7,9 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-
 import java.util.List;
-
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -25,8 +23,6 @@ public class Liststar1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar1);
         realm=Realm.getDefaultInstance();
-
-
     }
 
     @Override
@@ -40,6 +36,7 @@ public class Liststar1 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_list_back:
+
                 break;
 
             case R.id.action_list1:

@@ -42,10 +42,10 @@ public class DetailActivity extends AppCompatActivity {
 
     public void choosePrefecture() {
         final Card card = realm.where(Card.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
-        final String[] items = {"⭐️", "⭐️⭐️", "⭐️⭐️⭐️", "⭐️⭐️⭐️⭐️", "⭐️⭐️⭐️⭐️⭐️"};
+        final String[] items = {"⭐️⭐️⭐️⭐️⭐", "⭐⭐️⭐️⭐️", "⭐️⭐️⭐️", "⭐️⭐️️", "⭐️"};
         final int defaultItem = 0;
         new AlertDialog.Builder((this))
-                .setTitle("評価")
+                .setTitle("使用終了！これは良い買いものでしたか？")
                 .setSingleChoiceItems(items, defaultItem, null)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -54,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
-                                    card.listjudge = 1;
+                                    card.listjudge = 5;
                                     realm.insertOrUpdate(card);
                                 }
                             });
@@ -62,7 +62,7 @@ public class DetailActivity extends AppCompatActivity {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
-                                    card.listjudge = 2;
+                                    card.listjudge = 4;
                                     realm.insertOrUpdate(card);
                                 }
                             });
@@ -78,7 +78,7 @@ public class DetailActivity extends AppCompatActivity {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
-                                    card.listjudge = 4;
+                                    card.listjudge = 2;
                                     realm.insertOrUpdate(card);
                                 }
                             });
@@ -86,7 +86,7 @@ public class DetailActivity extends AppCompatActivity {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
-                                    card.listjudge = 5;
+                                    card.listjudge = 1;
                                     realm.insertOrUpdate(card);
                                 }
                             });

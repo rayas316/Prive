@@ -2,27 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_list5"
-        android:onClick="star5"
         android:showAsAction="never"
         android:title="⭐⭐⭐⭐⭐" />
     <item
         android:id="@+id/action_list3"
-        android:onClick="star3"
         android:showAsAction="never"
         android:title="⭐⭐⭐" />
     <item
         android:id="@+id/action_list2"
-        android:onClick="star2"
         android:showAsAction="never"
         android:title="⭐⭐" />
     <item
         android:id="@+id/action_list1"
-        android:onClick="star1"
         android:showAsAction="never"
         android:title="⭐" />
     <item
         android:id="@+id/action_list"
-        android:onClick="Main"
         android:showAsAction="never"
         android:title="Main" />
     <item

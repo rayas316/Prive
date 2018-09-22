@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.ListView;
-
 import java.util.List;
-
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -25,7 +22,7 @@ public class Liststar5 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar5);
-        realm=Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -63,7 +60,7 @@ public class Liststar5 extends AppCompatActivity {
                 startActivity(intent5);
                 break;
             case R.id.action_list:
-                Intent intent0=new Intent(Liststar5.this,MainActivity.class);
+                Intent intent0 = new Intent(Liststar5.this, MainActivity.class);
                 startActivity(intent0);
                 break;
         }
