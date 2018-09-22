@@ -20,7 +20,7 @@
     <item
         android:id="@+id/action_list"
         android:showAsAction="never"
-        android:title="Main" />
+        android:title="使用中" />
     <item
         android:id="@+id/action_list_back"
         android:showAsAction="never"

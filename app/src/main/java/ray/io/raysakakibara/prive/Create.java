@@ -30,6 +30,7 @@ public class Create extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         titleEditText = findViewById(R.id.titleEditText);
         contentEditText = findViewById(R.id.contentEditText);
+        setTitle("Prive    作成画面");
     }
 
 

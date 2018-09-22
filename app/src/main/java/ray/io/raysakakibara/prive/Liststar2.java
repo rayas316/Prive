@@ -21,12 +21,14 @@ public class Liststar2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar2);
         realm=Realm.getDefaultInstance();
+        setTitle("Prive    ⭐⭐の物️");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater2 = getMenuInflater();
         inflater2.inflate(R.menu.activity_actions2, menu);
         return true;
+
     }
 
     @Override

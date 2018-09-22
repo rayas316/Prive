@@ -25,6 +25,7 @@ public class Liststar5 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar5);
         realm = Realm.getDefaultInstance();
+        setTitle("Prive    ⭐⭐⭐⭐⭐の物️");
     }
 
     @Override

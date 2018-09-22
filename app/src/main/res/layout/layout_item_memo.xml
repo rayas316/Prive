@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="200dp"
         android:layout_margin="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -43,12 +43,40 @@
                 android:layout_height="match_parent"
                 android:layout_margin="3dp"
                 android:background="@drawable/button_ripple"
+                android:focusable="false"
                 android:onClick="use"
                 android:text="use"
                 android:textColor="@color/colorAccent"
-                android:textStyle="normal"
-                android:focusable="false"/>
+                android:textStyle="normal" />
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/valueDisPlay"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="値段:"
+                android:textSize="24sp" />
+
+
+            <TextView
+                android:id="@+id/contentText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|center"
+                android:textSize="24dp" />
 
         </LinearLayout>
 
@@ -127,7 +155,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center|left"
-                android:text="値段/使用回数:"
+                android:text="値段/使用:"
                 android:textSize="24sp" />
 
             <TextView
@@ -142,37 +170,11 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-
-            <TextView
-                android:id="@+id/valueDisPlay"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:text="値段:"
-                android:textSize="14sp" />
-
-
-            <TextView
-                android:id="@+id/contentText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="left|center" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
@@ -183,14 +185,16 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center|left"
-                android:text="買ったのは:" />
+                android:text="買ったのは:"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/dateView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="left|center" />
+                android:gravity="left|center"
+                android:textSize="24sp" />
 
 
         </LinearLayout>

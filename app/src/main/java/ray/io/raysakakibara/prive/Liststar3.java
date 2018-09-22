@@ -24,6 +24,7 @@ public class Liststar3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar3);
         realm=Realm.getDefaultInstance();
+        setTitle("Prive    ⭐⭐⭐️の物");
     }
 
 

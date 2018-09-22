@@ -24,6 +24,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Prive    詳細画面");
         setContentView(R.layout.activity_detail_activity);
         realm = Realm.getDefaultInstance();
         card = (Card) getIntent().getSerializableExtra("Card");
