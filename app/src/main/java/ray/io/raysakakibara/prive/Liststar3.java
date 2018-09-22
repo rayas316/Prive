@@ -24,14 +24,13 @@ public class Liststar3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar3);
         realm=Realm.getDefaultInstance();
-        setMemoList();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_actions3, menu);
+        MenuInflater inflater3 = getMenuInflater();
+        inflater3.inflate(R.menu.activity_actions3, menu);
         return true;
     }
 
@@ -80,6 +79,12 @@ public class Liststar3 extends AppCompatActivity {
         adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
 
         list3.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setMemoList();
     }
     @Override
     public void onDestroy() {

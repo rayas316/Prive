@@ -24,13 +24,12 @@ public class Liststar4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar4);
         realm=Realm.getDefaultInstance();
-        setMemoList();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_actions4, menu);
+        MenuInflater inflater4 = getMenuInflater();
+        inflater4.inflate(R.menu.activity_actions4, menu);
         return true;
     }
 
@@ -69,7 +68,6 @@ public class Liststar4 extends AppCompatActivity {
     }
 
     public void setMemoList() {
-
         list4 = (ListView) findViewById(R.id.listView4);
 
         RealmResults<Card> results = realm.where(Card.class).equalTo("listjudge", 4).findAll();
@@ -80,6 +78,11 @@ public class Liststar4 extends AppCompatActivity {
         list4.setAdapter(adapter);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setMemoList();
+    }
 
     @Override
     public void onDestroy() {

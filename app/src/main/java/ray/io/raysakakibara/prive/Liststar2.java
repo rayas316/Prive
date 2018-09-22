@@ -7,9 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-
 import java.util.List;
-
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -23,12 +21,11 @@ public class Liststar2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar2);
         realm=Realm.getDefaultInstance();
-        setMemoList();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_actions2, menu);
+        MenuInflater inflater2 = getMenuInflater();
+        inflater2.inflate(R.menu.activity_actions2, menu);
         return true;
     }
 
@@ -76,6 +73,12 @@ public class Liststar2 extends AppCompatActivity {
         adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
 
         list2.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setMemoList();
     }
 
     @Override

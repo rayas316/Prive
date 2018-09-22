@@ -26,13 +26,12 @@ public class Liststar5 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liststar5);
         realm=Realm.getDefaultInstance();
-        setMemoList();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_actions5, menu);
+        MenuInflater inflater5 = getMenuInflater();
+        inflater5.inflate(R.menu.activity_actions5, menu);
         return true;
     }
 
@@ -81,6 +80,13 @@ public class Liststar5 extends AppCompatActivity {
         adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);
 
         list5.setAdapter(adapter);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setMemoList();
     }
 
 
