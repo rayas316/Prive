@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent5);
                 break;
         }
-        return true;
+        return false;
     }
 
     protected void onCreate(Bundle savedInstanceState) {

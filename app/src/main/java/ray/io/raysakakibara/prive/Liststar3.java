@@ -66,7 +66,7 @@ public class Liststar3 extends AppCompatActivity {
                 break;
 
         }
-        return true;
+        return false;
     }
 
     public void setMemoList() {

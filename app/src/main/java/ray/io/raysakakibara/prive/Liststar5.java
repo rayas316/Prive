@@ -67,7 +67,7 @@ public class Liststar5 extends AppCompatActivity {
                 startActivity(intent0);
                 break;
         }
-        return true;
+        return false;
     }
 
     public void setMemoList() {
