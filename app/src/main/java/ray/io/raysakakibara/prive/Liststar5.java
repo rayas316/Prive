@@ -75,7 +75,9 @@ public class Liststar5 extends AppCompatActivity {
 
         list5 = (ListView) findViewById(R.id.listView5);
 
-        card = (Card) getIntent().getSerializableExtra("Card");
+        RealmResults<Card> results = realm.where(Card.class).equalTo("listjudge", 5).findAll();
+
+        items2 = realm.copyFromRealm(results);
 
 
         adapter = new CardAdapter(this, R.layout.layout_item_memo, items2, realm);

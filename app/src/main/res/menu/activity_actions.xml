@@ -10,11 +10,11 @@
         android:showAsAction="never"
         android:title="⭐⭐⭐⭐" />
     <item
-        android:id="@+id/action_list2"
+        android:id="@+id/action_list3"
         android:showAsAction="never"
         android:title="⭐⭐⭐" />
     <item
-        android:id="@+id/action_list3"
+        android:id="@+id/action_list2"
         android:showAsAction="never"
         android:title="⭐⭐" />
     <item

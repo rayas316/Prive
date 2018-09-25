@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import io.realm.Realm;
@@ -54,7 +55,9 @@ public class DetailActivity extends AppCompatActivity {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (defaultItem == 0) {
+                        int choicePos=((AlertDialog) dialog).getListView().getCheckedItemPosition();
+                        Log.d("Ray","pos"+choicePos);
+                        if (choicePos == 0) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
@@ -64,7 +67,7 @@ public class DetailActivity extends AppCompatActivity {
                             });
                             Intent intent = new Intent(DetailActivity.this, MainActivity.class);
                             startActivity(intent);
-                        } else if (defaultItem == 1) {
+                        } else if (choicePos == 1) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
@@ -74,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
                             });
                             Intent intent = new Intent(DetailActivity.this, MainActivity.class);
                             startActivity(intent);
-                        } else if (defaultItem == 2) {
+                        } else if (choicePos == 2) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
@@ -84,7 +87,7 @@ public class DetailActivity extends AppCompatActivity {
                             });
                             Intent intent = new Intent(DetailActivity.this, MainActivity.class);
                             startActivity(intent);
-                        } else if (defaultItem == 3) {
+                        } else if (choicePos == 3) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
@@ -94,7 +97,7 @@ public class DetailActivity extends AppCompatActivity {
                             });
                             Intent intent = new Intent(DetailActivity.this, MainActivity.class);
                             startActivity(intent);
-                        } else if (defaultItem == 4) {
+                        } else if (choicePos == 4) {
                             realm.executeTransaction(new Realm.Transaction() {
                                 @Override
                                 public void execute(Realm realm) {
