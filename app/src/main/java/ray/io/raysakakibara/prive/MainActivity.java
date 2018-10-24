@@ -88,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Card card = (Card) parent.getItemAtPosition(position);
                                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                                intent.putExtra("Card", card
-                                );
+                                intent.putExtra("Card", card);
                                 startActivity(intent);
                             }
                         })
